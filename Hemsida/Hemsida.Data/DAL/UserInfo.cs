@@ -9,11 +9,35 @@
 
 namespace Hemsida.Data.DAL
 {
+    using Hemsida.Data.Repos;
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class UserInfo
     {
+        public UserInfo()
+        {
+        }
+        public UserInfo(string id, string nameOfUser)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                userId = id;
+                userName = nameOfUser;
+            }
+
+        }
+        public UserInfo(string id)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                var repos = new AppUserRepos();
+                repos.GetUser(id);
+                id = userId;
+            }
+        }
+
         public System.Guid id { get; set; }
         public string userId { get; set; }
         public string userName { get; set; }

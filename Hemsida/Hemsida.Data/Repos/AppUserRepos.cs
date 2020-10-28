@@ -28,5 +28,20 @@ namespace Hemsida.Data.Repos
                 return addInfo;
             }
         }
+        public UserInfo GetUser(string id)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                var user = db.UserInfo.Where(u => u.userId == id).FirstOrDefault();
+                return user;
+            }
+        }
+        public List<UserInfo> ListUsers(string search)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                return db.UserInfo.Where(u => u.userName.Contains(search)).ToList();
+            }
+        }
     }
 }
