@@ -62,6 +62,9 @@
     <Compile Include="DAL\AspNetUsers.cs">
       <DependentUpon>HemsidaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BlogPost.cs">
+      <DependentUpon>HemsidaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\C__MigrationHistory.cs">
       <DependentUpon>HemsidaModel.tt</DependentUpon>
     </Compile>
@@ -81,6 +84,7 @@
       <DependentUpon>HemsidaModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\BlogRepos.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
