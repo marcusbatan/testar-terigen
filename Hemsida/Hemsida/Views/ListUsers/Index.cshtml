@@ -1,0 +1,26 @@
+﻿@model List<Hemsida.Data.DAL.UserInfo>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Search for users!</h2>
+<div class="w3ls-login box box--big">
+    <form method="get" action="">
+        <div class="agile-field-txt">
+            <label><i class="fa fa-user" aria-hidden="true"></i> Username </label>
+            <input type="text" name="search" placeholder="Search on email" />
+            <input type="submit" name="submit" />
+        </div>
+    </form>
+</div>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("OtherUserProfile", "MyProfile", new { id = item.id })">
+        <div style="margin-top: 25px;margin-left: 10px" :>
+            @item.userName
+            <br />
+            <br />
+            <hr />
+        </div>
+    </a>
+}
