@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4bc01e07f2df40f7905fb139949d5129" Name="Diagram1">
-        <EntityTypeShape EntityType="HemsidaModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HemsidaModel.C__MigrationHistory" Width="1.5" PointX="7.125" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HemsidaModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HemsidaModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HemsidaModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
@@ -15,6 +15,7 @@
         <AssociationConnector Association="HemsidaModel.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HemsidaModel.BlogPost" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.UserInfo" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="HemsidaModel.Team" Width="1.5" PointX="7.5" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

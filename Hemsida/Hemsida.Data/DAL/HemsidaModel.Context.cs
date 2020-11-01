@@ -32,5 +32,6 @@ namespace Hemsida.Data.DAL
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<BlogPost> BlogPost { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<Team> Team { get; set; }
     }
 }
