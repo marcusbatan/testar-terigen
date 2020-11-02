@@ -1,7 +1,45 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+<html lang="sv-se">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1-0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/Content/styling.css">
+    <title> Testar Nytt</title>
+</head>
+<body>
+    <h1 class="fancy"> Välkommen </h1>
+    
 
-<p>Use this area to provide additional information.</p>
+
+    <script>
+        const text = document.querySelector(".fancy");
+        const strText = text.textContent;
+        const splitText = strText.split("");
+        text.textContent = "";
+        for (let i = 0; i < splitText.length; i++) {
+            text.innerHTML += "<span>" + splitText[i] + "</span>";
+        }
+
+        let char = 0;
+        let timer = setInterval(onTick, 50);
+
+        function onTick() {
+            const span = text.querySelectorAll('span')[char];
+            span.classList.add('fade');
+            char++
+            if (char === splitText.length) {
+                complete();
+                return;
+            }
+        }
+        function complete() {
+            clearInterval(timer);
+            timer = null;
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 ﻿using Hemsida.Data.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,15 @@ namespace Hemsida.Data.Repos
             using (var db = new HemsidaEntities())
             {
                 return db.UserInfo.Where(u => u.userName.Contains(search)).ToList();
+            }
+        }
+        public  UserInfo UpdateValuesOnUser(UserInfo userInfo)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                db.Entry(userInfo).State = EntityState.Modified;
+                db.SaveChanges();
+                return userInfo;
             }
         }
     }

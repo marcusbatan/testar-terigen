@@ -37,7 +37,6 @@ namespace Hemsida.Data.DAL
                 id = userId;
             }
         }
-
         public System.Guid id { get; set; }
         public string userId { get; set; }
         public string userName { get; set; }
