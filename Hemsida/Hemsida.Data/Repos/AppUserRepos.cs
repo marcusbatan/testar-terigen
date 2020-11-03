@@ -48,6 +48,7 @@ namespace Hemsida.Data.Repos
         {
             using (var db = new HemsidaEntities())
             {
+                
                 db.Entry(userInfo).State = EntityState.Modified;
                 db.SaveChanges();
                 return userInfo;

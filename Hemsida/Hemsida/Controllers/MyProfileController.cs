@@ -49,16 +49,18 @@ namespace Hemsida.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var userInfo = db.UserInfo.Where(u => u.userId == id).FirstOrDefault();
-            if (userInfo == null)
+            var theId = userInfo.id;
+            UserInfo info = db.UserInfo.Find(theId);
+            if (info == null)
             {
                 return HttpNotFound();
             }
-            return View(userInfo);
+            return View(info);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userName,firstName,lastName,age")] UserInfo userInfo)
+        public ActionResult Edit(UserInfo userInfo)
         {
             if (ModelState.IsValid)
             {
