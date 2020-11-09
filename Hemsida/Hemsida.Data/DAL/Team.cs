@@ -14,8 +14,20 @@ namespace Hemsida.Data.DAL
     
     public partial class Team
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Team()
+        {
+            this.Games = new HashSet<Games>();
+            this.Games1 = new HashSet<Games>();
+        }
+    
         public System.Guid teamId { get; set; }
         public string teamName { get; set; }
         public byte[] teamLogo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Games> Games { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Games> Games1 { get; set; }
     }
 }

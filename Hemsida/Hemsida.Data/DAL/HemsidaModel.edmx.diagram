@@ -16,6 +16,10 @@
         <EntityTypeShape EntityType="HemsidaModel.BlogPost" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.UserInfo" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.Team" Width="1.5" PointX="7.5" PointY="6.75" />
+        <EntityTypeShape EntityType="HemsidaModel.Games" Width="1.5" PointX="10.125" PointY="6.5" />
+        <EntityTypeShape EntityType="HemsidaModel.Teams" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="HemsidaModel.FK__Games__AwayTeam__403A8C7D" />
+        <AssociationConnector Association="HemsidaModel.FK__Games__HomeTeam__3F466844" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -33,5 +33,7 @@ namespace Hemsida.Data.DAL
         public virtual DbSet<BlogPost> BlogPost { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<Team> Team { get; set; }
+        public virtual DbSet<Games> Games { get; set; }
+        public virtual DbSet<Teams> Teams { get; set; }
     }
 }

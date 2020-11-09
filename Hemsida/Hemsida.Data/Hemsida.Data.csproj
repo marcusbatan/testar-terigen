@@ -68,6 +68,9 @@
     <Compile Include="DAL\C__MigrationHistory.cs">
       <DependentUpon>HemsidaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Games.cs">
+      <DependentUpon>HemsidaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\HemsidaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +87,9 @@
       <DependentUpon>HemsidaModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DAL\Team.cs">
+      <DependentUpon>HemsidaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Teams.cs">
       <DependentUpon>HemsidaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\UserInfo.cs">

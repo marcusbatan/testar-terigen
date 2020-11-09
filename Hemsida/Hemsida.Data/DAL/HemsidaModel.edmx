@@ -76,6 +76,16 @@
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
           <Property Name="UserId" Type="nchar" MaxLength="300" />
         </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HomeScore" Type="int" />
+          <Property Name="AwayScore" Type="int" />
+          <Property Name="HomeTeam" Type="uniqueidentifier" />
+          <Property Name="AwayTeam" Type="uniqueidentifier" />
+        </EntityType>
         <EntityType Name="Team">
           <Key>
             <PropertyRef Name="teamId" />
@@ -95,6 +105,39 @@
           <Property Name="lastName" Type="nvarchar" MaxLength="100" />
           <Property Name="age" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hemsida.dbo.Teams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="teamId" />
+          </Key>
+          <Property Name="teamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="teamName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Games__AwayTeam__403A8C7D">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="teamId" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="AwayTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__HomeTeam__3F466844">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="teamId" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="HomeTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -159,8 +202,23 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlogPost" EntityType="Self.BlogPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Teams].[teamId] AS [teamId], 
+    [Teams].[teamName] AS [teamName]
+    FROM [dbo].[Teams] AS [Teams]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Games__AwayTeam__403A8C7D" Association="Self.FK__Games__AwayTeam__403A8C7D">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__HomeTeam__3F466844" Association="Self.FK__Games__HomeTeam__3F466844">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -295,6 +353,16 @@
           <EntitySet Name="BlogPost" EntityType="HemsidaModel.BlogPost" />
           <EntitySet Name="UserInfo" EntityType="HemsidaModel.UserInfo" />
           <EntitySet Name="Team" EntityType="HemsidaModel.Team" />
+          <EntitySet Name="Games" EntityType="HemsidaModel.Games" />
+          <EntitySet Name="Teams" EntityType="HemsidaModel.Teams" />
+          <AssociationSet Name="FK__Games__AwayTeam__403A8C7D" Association="HemsidaModel.FK__Games__AwayTeam__403A8C7D">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__HomeTeam__3F466844" Association="HemsidaModel.FK__Games__HomeTeam__3F466844">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BlogPost">
           <Key>
@@ -323,7 +391,52 @@
           <Property Name="teamId" Type="Guid" Nullable="false" />
           <Property Name="teamName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="teamLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Games" Relationship="HemsidaModel.FK__Games__AwayTeam__403A8C7D" FromRole="Team" ToRole="Games" />
+          <NavigationProperty Name="Games1" Relationship="HemsidaModel.FK__Games__HomeTeam__3F466844" FromRole="Team" ToRole="Games" />
         </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="Guid" Nullable="false" />
+          <Property Name="HomeScore" Type="Int32" />
+          <Property Name="AwayScore" Type="Int32" />
+          <Property Name="HomeTeam" Type="Guid" />
+          <Property Name="AwayTeam" Type="Guid" />
+          <NavigationProperty Name="Team" Relationship="HemsidaModel.FK__Games__AwayTeam__403A8C7D" FromRole="Games" ToRole="Team" />
+          <NavigationProperty Name="Team1" Relationship="HemsidaModel.FK__Games__HomeTeam__3F466844" FromRole="Games" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="teamId" />
+          </Key>
+          <Property Name="teamId" Type="Guid" Nullable="false" />
+          <Property Name="teamName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Games__AwayTeam__403A8C7D">
+          <End Type="HemsidaModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="HemsidaModel.Games" Role="Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="teamId" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="AwayTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__HomeTeam__3F466844">
+          <End Type="HemsidaModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="HemsidaModel.Games" Role="Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="teamId" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="HomeTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -420,6 +533,25 @@
             <EntityTypeMapping TypeName="HemsidaModel.Team">
               <MappingFragment StoreEntitySet="Team">
                 <ScalarProperty Name="teamLogo" ColumnName="teamLogo" />
+                <ScalarProperty Name="teamName" ColumnName="teamName" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="HemsidaModel.Games">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="AwayTeam" ColumnName="AwayTeam" />
+                <ScalarProperty Name="HomeTeam" ColumnName="HomeTeam" />
+                <ScalarProperty Name="AwayScore" ColumnName="AwayScore" />
+                <ScalarProperty Name="HomeScore" ColumnName="HomeScore" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="HemsidaModel.Teams">
+              <MappingFragment StoreEntitySet="Teams">
                 <ScalarProperty Name="teamName" ColumnName="teamName" />
                 <ScalarProperty Name="teamId" ColumnName="teamId" />
               </MappingFragment>
