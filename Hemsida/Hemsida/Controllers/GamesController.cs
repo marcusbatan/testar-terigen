@@ -28,7 +28,7 @@ namespace Hemsida.Controllers
                 }
                 var repos = new GameRepos();
                 var addGame = repos.AddGames(homeScore, awayScore, homeTeam, awayTeam);
-                return View(addGame);
+                return View();
             }
         }
     }

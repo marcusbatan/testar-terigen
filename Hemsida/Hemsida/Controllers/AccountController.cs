@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Hemsida.Models;
 using Hemsida.Data.Repos;
+using System.IO;
 
 namespace Hemsida.Controllers
 {
@@ -150,6 +151,17 @@ namespace Hemsida.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            byte[] imageData = null;
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                using (var binary = new BinaryReader(poImgFile.InputStream))
+                {
+
+                    imageData = binary.ReadBytes(poImgFile.ContentLength);
+                }
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -157,7 +169,8 @@ namespace Hemsida.Controllers
                 var repos = new AppUserRepos();
                 if (result.Succeeded)
                 {
-                    repos.AddUserInfo(user.Id, model.UserName, model.FirstName, model.LastName, model.Age);
+                    model.Img = imageData;
+                    repos.AddUserInfo(user.Id, model.UserName, model.FirstName, model.LastName, model.Age, model.Img);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

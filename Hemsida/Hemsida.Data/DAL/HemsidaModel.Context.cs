@@ -30,10 +30,12 @@ namespace Hemsida.Data.DAL
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<BlogPost> BlogPost { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<Games> Games { get; set; }
         public virtual DbSet<Teams> Teams { get; set; }
+        public virtual DbSet<Blog> Blog { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
     }
 }

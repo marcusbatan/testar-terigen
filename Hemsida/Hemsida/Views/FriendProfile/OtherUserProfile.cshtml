@@ -1,0 +1,24 @@
+﻿@model Hemsida.Data.DAL.UserInfo
+@using Microsoft.AspNet.Identity
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "OtherUserProfile";
+}
+
+@if (User.Identity.Name == "" || User.Identity.Name == null)
+{
+    Response.Redirect(Url.Action("Register", "Account"));
+}
+else
+{
+    <h1>@Model.firstName @Model.lastName</h1>
+    <br />
+    <h1>
+        <img src="@Url.Action("OtherProfilePhoto", "FriendProfile", new { id = Model.id })" style="width:160px;height:160px; background: #FFFFFF;
+    margin: auto;
+    -moz-border-radius: 60px;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;" />
+    </h1>
+}

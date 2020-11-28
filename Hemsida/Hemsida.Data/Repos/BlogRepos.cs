@@ -9,18 +9,18 @@ namespace Hemsida.Data.Repos
 {
     public class BlogRepos
     {
-        public BlogPost AddBlogg(string cat, string text, string userId)
+        public Blog AddBlogg(string cat, string text, string userId)
         {
             using (var db = new HemsidaEntities())
             {
-                var post = new BlogPost
+                var post = new Blog
                 {
                     BlogId = Guid.NewGuid(),
                     Category = cat,
                     Text = text,
                     UserId = userId
                 };
-                db.BlogPost.Add(post);
+                db.Blog.Add(post);
                 db.SaveChanges();
                 return post;
             }

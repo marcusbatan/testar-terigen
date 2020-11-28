@@ -13,13 +13,19 @@
         <AssociationConnector Association="HemsidaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="HemsidaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="HemsidaModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="HemsidaModel.BlogPost" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.UserInfo" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.Team" Width="1.5" PointX="7.5" PointY="6.75" />
         <EntityTypeShape EntityType="HemsidaModel.Games" Width="1.5" PointX="10.125" PointY="6.5" />
         <EntityTypeShape EntityType="HemsidaModel.Teams" Width="1.5" PointX="0.75" PointY="6.75" />
         <AssociationConnector Association="HemsidaModel.FK__Games__AwayTeam__403A8C7D" />
         <AssociationConnector Association="HemsidaModel.FK__Games__HomeTeam__3F466844" />
+        <EntityTypeShape EntityType="HemsidaModel.Blog" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="HemsidaModel.FK_Blog_Blog1" />
+        <EntityTypeShape EntityType="HemsidaModel.Category" Width="1.5" PointX="9.375" PointY="1.625" />
+        <EntityTypeShape EntityType="HemsidaModel.Product" Width="1.5" PointX="11.625" PointY="1" />
+        <AssociationConnector Association="HemsidaModel.FK_Category_Category" />
+        <AssociationConnector Association="HemsidaModel.FK_Product_Category" />
+        <AssociationConnector Association="HemsidaModel.FK_Product_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

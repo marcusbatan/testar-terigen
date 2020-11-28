@@ -11,7 +11,7 @@ namespace Hemsida.Data.Repos
 {
     public class AppUserRepos
     {
-        public UserInfo AddUserInfo(string userId, string userName, string firstName, string lastName, int age)
+        public UserInfo AddUserInfo(string userId, string userName, string firstName, string lastName, int age, byte[] img)
         {
             using (var db = new HemsidaEntities())
             {
@@ -22,18 +22,19 @@ namespace Hemsida.Data.Repos
                     userName = userName,
                     firstName = firstName,
                     lastName = lastName,
-                    age = age
+                    age = age,
+                    Img = img
                 };
                 db.UserInfo.Add(addInfo);
                 db.SaveChanges();
                 return addInfo;
             }
         }
-        public UserInfo GetUser(string id)
+        public UserInfo GetUser(Guid id)
         {
             using (var db = new HemsidaEntities())
             {
-                var user = db.UserInfo.Where(u => u.userId == id).FirstOrDefault();
+                var user = db.UserInfo.Where(u => u.id == id).FirstOrDefault();
                 return user;
             }
         }

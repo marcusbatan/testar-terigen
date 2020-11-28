@@ -12,12 +12,18 @@ namespace Hemsida.Data.DAL
     using Hemsida.Data.Repos;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class UserInfo
     {
         public UserInfo()
         {
+        }
+        public UserInfo(string id)
+        {
+            using(var db = new HemsidaEntities())
+            {
+
+            }
         }
         public UserInfo(string id, string nameOfUser)
         {
@@ -28,13 +34,20 @@ namespace Hemsida.Data.DAL
             }
 
         }
-        public UserInfo(string id)
+        public UserInfo(Guid ide)
         {
             using (var db = new HemsidaEntities())
             {
                 var repos = new AppUserRepos();
-                repos.GetUser(id);
-                id = userId;
+                var user = repos.GetUser(ide);
+                id = user.id;
+                userId = user.userId;
+                firstName = user.firstName;
+                lastName = user.lastName;
+                age = user.age;
+                userName = user.userName;
+                Img = user.Img;
+
             }
         }
         public System.Guid id { get; set; }
@@ -43,5 +56,6 @@ namespace Hemsida.Data.DAL
         public string firstName { get; set; }
         public string lastName { get; set; }
         public Nullable<int> age { get; set; }
+        public byte[] Img { get; set; }
     }
 }

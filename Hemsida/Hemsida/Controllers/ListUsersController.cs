@@ -15,6 +15,7 @@ namespace Hemsida.Controllers
         {
             using (var db = new HemsidaEntities())
             {
+                var user = User.Identity.Name;
                 var repos = new AppUserRepos();
                 var listOfUsers = repos.ListUsers(search);
                 return View(listOfUsers);

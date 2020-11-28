@@ -15,7 +15,7 @@
 
 @foreach (var item in Model)
 {
-    <a href="@Url.Action("OtherUserProfile", "MyProfile", new { id = item.id })">
+    <a href="@Url.Action("OtherUserProfile", "FriendProfile", new { id = item.id })">
         <div style="margin-top: 25px;margin-left: 10px" :>
             @item.userName
             <br />

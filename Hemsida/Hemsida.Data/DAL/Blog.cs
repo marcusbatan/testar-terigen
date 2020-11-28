@@ -12,11 +12,16 @@ namespace Hemsida.Data.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class BlogPost
+    public partial class Blog
     {
         public System.Guid BlogId { get; set; }
-        public string Text { get; set; }
         public string Category { get; set; }
+        public string Text { get; set; }
         public string UserId { get; set; }
+        public byte[] Time { get; set; }
+        public byte[] Img { get; set; }
+    
+        public virtual Blog Blog1 { get; set; }
+        public virtual Blog Blog2 { get; set; }
     }
 }
