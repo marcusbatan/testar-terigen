@@ -11,16 +11,33 @@ namespace Hemsida.Data.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Blog
     {
+        public Blog()
+        {
+
+        }
+        public Blog(Guid id)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                var blogRepos = new Hemsida.Data.Repos.BlogRepos();
+                var blog = blogRepos.GetBlog(id);
+                Category = blog.Category;
+                Text = blog.Text;
+                Img = blog.Img;
+                DateTime = blog.DateTime;
+                BlogId = blog.BlogId;
+            }
+        }
         public System.Guid BlogId { get; set; }
         public string Category { get; set; }
         public string Text { get; set; }
         public string UserId { get; set; }
-        public byte[] Time { get; set; }
         public byte[] Img { get; set; }
-    
+        public Nullable<System.DateTime> DateTime { get; set; }
+
         public virtual Blog Blog1 { get; set; }
         public virtual Blog Blog2 { get; set; }
     }

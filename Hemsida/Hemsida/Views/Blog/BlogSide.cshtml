@@ -1,0 +1,23 @@
+﻿@model Hemsida.Data.DAL.Blog
+
+@{
+    ViewBag.Title = "BlogSide";
+}
+{
+<head>
+    <link href="@Url.Content("~/css/StylarBlogg.css")" rel="stylesheet" type="text/css" />
+</head>
+<h1>A blogpost about @Model.Category</h1>
+<a href="@Url.Action("GetCategory", "Blog", new { cat = Model.Category })">
+    <h1> @Html.DisplayFor(modelItem => Model.Category) </h1>
+</a>
+<hr />
+<img src="@Url.Action("OtherProfilePhoto", "Blog", new { id = Model.BlogId })" class="image" />
+<div class="align-text">
+        <h7>@Html.DisplayFor(modelItem => Model.Text)</h7>
+</div>
+<br />
+<h10>@Html.DisplayFor(modelItem => Model.DateTime)</h10>
+}
+
+

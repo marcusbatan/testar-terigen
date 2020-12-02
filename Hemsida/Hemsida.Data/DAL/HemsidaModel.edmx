@@ -75,8 +75,8 @@
           <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UserId" Type="nchar" MaxLength="300" Nullable="false" />
-          <Property Name="Time" Type="timestamp" StoreGeneratedPattern="Computed" />
           <Property Name="Img" Type="varbinary(max)" />
+          <Property Name="DateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -549,8 +549,8 @@ warning 6002: The table/view 'Hemsida.dbo.Teams' does not have a primary key def
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="300" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Blog1" Relationship="HemsidaModel.FK_Blog_Blog1" FromRole="Blog" ToRole="Blog1" />
           <NavigationProperty Name="Blog2" Relationship="HemsidaModel.FK_Blog_Blog1" FromRole="Blog1" ToRole="Blog" />
-          <Property Name="Time" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Blog_Blog1">
           <End Type="HemsidaModel.Blog" Role="Blog" Multiplicity="1" />
@@ -743,8 +743,8 @@ warning 6002: The table/view 'Hemsida.dbo.Teams' does not have a primary key def
           <EntitySetMapping Name="Blog">
             <EntityTypeMapping TypeName="HemsidaModel.Blog">
               <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="Img" ColumnName="Img" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Category" ColumnName="Category" />

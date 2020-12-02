@@ -177,7 +177,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\NewGamesController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\UserInfoesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,6 +197,7 @@
     <Content Include="Content\stylar.css" />
     <Content Include="Content\styling.css" />
     <Content Include="css\font-awesomes.css" />
+    <Content Include="css\StylarBlogg.css" />
     <Content Include="css\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -290,6 +291,10 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Createe.cshtml" />
+    <Content Include="Views\Blog\SeeAllBlogs.cshtml" />
+    <Content Include="Views\Blog\GetCategory.cshtml" />
+    <Content Include="Views\Blog\BlogSide.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

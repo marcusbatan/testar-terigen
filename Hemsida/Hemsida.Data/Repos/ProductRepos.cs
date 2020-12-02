@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Hemsida.Data.Repos
 {
-    public interface ProductRepos
+    public class ProductRepos
     {
-        IEnumerable<Product> Products { get; set; }
-        IEnumerable<Product> PrefdProducts { get; set; }
-        Product GetProductById(Guid id);
+        public Product AddProduct(Product product)
+        {
+            using(var db = new HemsidaEntities())
+            {
+                db.Product.Add(product);
+                db.SaveChanges();
+                return product;
+            }
+        }
     }
 }

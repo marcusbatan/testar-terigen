@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Hemsida.Data.DAL.Blog>
+
+@{
+    ViewBag.Title = "See a list of all blogs written by any user!";
+}
+<head>
+    <link href="@Url.Content("~/css/StylarBlogg.css")" rel="stylesheet" type="text/css" />
+</head>
+<h2>See all blogs written by any user!</h2>
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("GetCategory", "Blog", new { cat = item.Category })">
+        <h1> @Html.DisplayFor(modelItem => item.Category) </h1>
+    </a>
+    <hr />
+    <img src="@Url.Action("OtherProfilePhoto", "Blog", new { id = item.BlogId })" class="image" />
+    <div class="align-text">
+        <a href="@Url.Action("Blogside", "Blog", new { id = item.BlogId })">
+            <h7>@Html.DisplayFor(modelItem => item.Text)</h7>
+        </a>
+    </div>
+    <br />
+    <h10>@Html.DisplayFor(modelItem => item.DateTime)</h10>
+}
