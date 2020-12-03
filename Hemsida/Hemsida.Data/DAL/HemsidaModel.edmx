@@ -105,11 +105,11 @@
           <Property Name="ShortDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="LongDescription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ImageThumbnail" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsPreferredDrink" Type="bit" />
-          <Property Name="InStock" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="uniqueidentifier" />
+          <Property Name="InStock" Type="bit" />
+          <Property Name="Img" Type="varbinary(max)" />
+          <Property Name="DateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -584,14 +584,13 @@ warning 6002: The table/view 'Hemsida.dbo.Teams' does not have a primary key def
           <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="ImageUrl" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ImageThumbnail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsPreferredDrink" Type="Boolean" />
-          <Property Name="InStock" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Guid" />
           <NavigationProperty Name="Category" Relationship="HemsidaModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Product1" Relationship="HemsidaModel.FK_Product_Product" FromRole="Product" ToRole="Product1" />
           <NavigationProperty Name="Product2" Relationship="HemsidaModel.FK_Product_Product" FromRole="Product1" ToRole="Product" />
+          <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Category_Category">
           <End Type="HemsidaModel.Category" Role="Category" Multiplicity="1" />
@@ -764,11 +763,10 @@ warning 6002: The table/view 'Hemsida.dbo.Teams' does not have a primary key def
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="HemsidaModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="InStock" ColumnName="InStock" />
                 <ScalarProperty Name="IsPreferredDrink" ColumnName="IsPreferredDrink" />
-                <ScalarProperty Name="ImageThumbnail" ColumnName="ImageThumbnail" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
                 <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />

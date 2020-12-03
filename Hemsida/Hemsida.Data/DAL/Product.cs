@@ -9,22 +9,40 @@
 
 namespace Hemsida.Data.DAL
 {
+    using Hemsida.Data.Repos;
     using System;
     using System.Collections.Generic;
     
     public partial class Product
     {
+        public Product()
+        {
+
+        }
+        public Product(Guid id)
+        {
+            var repos = new ProductRepos();
+            var theProduct = repos.getProduct(id);
+            Name = theProduct.Name;
+            ShortDescription = theProduct.ShortDescription;
+            LongDescription = theProduct.LongDescription;
+            Price = theProduct.Price;
+            ProductId = theProduct.ProductId;
+            Img = theProduct.Img;
+            DateTime = theProduct.DateTime;
+            CategoryId = theProduct.CategoryId;
+        }
         public System.Guid ProductId { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public decimal Price { get; set; }
-        public string ImageUrl { get; set; }
-        public string ImageThumbnail { get; set; }
         public Nullable<bool> IsPreferredDrink { get; set; }
-        public int InStock { get; set; }
         public Nullable<System.Guid> CategoryId { get; set; }
-    
+        public byte[] Img { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
+        public List<Category> CategoriesCollection { get; set; }
+
         public virtual Category Category { get; set; }
         public virtual Product Product1 { get; set; }
         public virtual Product Product2 { get; set; }

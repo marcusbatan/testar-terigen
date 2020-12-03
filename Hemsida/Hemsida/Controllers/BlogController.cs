@@ -48,7 +48,7 @@ namespace Hemsida.Controllers
         }
         public ActionResult BlogSide(Guid id)
         {
-            using(var db = new HemsidaEntities())
+            using (var db = new HemsidaEntities())
             {
                 var blog = new Blog(id);
                 ViewBag.Blog = blog;

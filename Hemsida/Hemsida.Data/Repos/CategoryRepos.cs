@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace Hemsida.Data.Repos
 {
-    public interface CategoryRepos
+    public class CategoryRepos
     {
-        IEnumerable<Category> Categories { get; }
+        public Category CreateCategory(string catName, string desc)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                var cat = new Category
+                {
+                    CategoryId = Guid.NewGuid(),
+                    CategoryName = catName,
+                    Description = desc
+                };
+                db.Category.Add(cat);
+                db.SaveChanges();
+                return cat;
+            }
+        }
     }
 }

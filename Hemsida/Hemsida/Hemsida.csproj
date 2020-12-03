@@ -280,11 +280,6 @@
     <Content Include="Views\Blog\SeeMyBlogs.cshtml" />
     <Content Include="Views\Home\Fun.cshtml" />
     <Content Include="Views\MyProfile\GetUsersWithInterests.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
@@ -294,7 +289,9 @@
     <Content Include="Views\Blog\SeeAllBlogs.cshtml" />
     <Content Include="Views\Blog\GetCategory.cshtml" />
     <Content Include="Views\Blog\BlogSide.cshtml" />
+    <Content Include="Views\Categories\AddCat.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
+    <Content Include="Views\Product\GetAllProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

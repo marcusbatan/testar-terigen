@@ -37,7 +37,6 @@ namespace Hemsida.Data.DAL
         public string UserId { get; set; }
         public byte[] Img { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
-
         public virtual Blog Blog1 { get; set; }
         public virtual Blog Blog2 { get; set; }
     }
