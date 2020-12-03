@@ -1,0 +1,29 @@
+﻿@model Hemsida.Data.DAL.Product
+@{
+    ViewBag.Title = "ProductPage";
+}
+
+<h2>ProductPage</h2>
+<a href="@Url.Action("GetProductsByCategory", "Product", new {catId = Model.CategoryId })">
+    <div class="ItemCategory">
+        @Model.CategoryId
+    </div>
+</a>
+
+<div class="itemName">
+    @Model.Name
+</div>
+<div class="itemPrice">
+    @Model.Price
+</div>
+<div class="itemImage">
+    <img src="@Url.Action("OtherProfilePhoto", "Product", new { id = Model.ProductId })" />
+</div>
+<div class="itemDesc">
+    @Model.LongDescription
+</div>
+
+<br />
+<hr />
+<br />
+

@@ -292,6 +292,8 @@
     <Content Include="Views\Categories\AddCat.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Product\GetAllProducts.cshtml" />
+    <Content Include="Views\Product\GetProductsByCategory.cshtml" />
+    <Content Include="Views\Product\ProductPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

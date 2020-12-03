@@ -66,6 +66,27 @@ namespace Hemsida.Controllers
                 return View(getAllProds);
             }
         }
+        public ActionResult GetProductsByCategory(Guid catId)
+        {
+            using (var db = new HemsidaEntities())
+            {
+                var getProd = db.Product.Where(u => u.CategoryId == catId).ToList();
+                return View(getProd);
+            }
+        }
+        public ActionResult ProductPage(Guid id)
+        {
+            if(id != null)
+            {
+                var prodPage = new Product(id);
+                ViewBag.Prod = prodPage;
+                return View(prodPage);
+            }
+            else
+            {
+                return View();
+            }
+        }
         public FileContentResult OtherProfilePhoto(Guid id)
         {
             var db = new HemsidaEntities();

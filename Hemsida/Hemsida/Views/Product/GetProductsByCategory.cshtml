@@ -1,0 +1,27 @@
+﻿@model List<Hemsida.Data.DAL.Product>
+@{
+    ViewBag.Title = "GetProductsByCategory";
+}
+
+<h2>GetProductsByCategory</h2>
+@foreach (var item in Model)
+{
+    <div class="ItemCategory">
+        @item.CategoryId
+    </div>
+    <div class="itemName">
+        @item.Name
+    </div>
+    <div class="itemPrice">
+        @item.Price
+    </div>
+    <div class="itemImage">
+        <img src="@Url.Action("OtherProfilePhoto", "Product", new { id = item.ProductId })" />
+    </div>
+    <div class="itemDesc">
+        @item.ShortDescription
+    </div>
+    <br />
+    <hr />
+    <br />
+}

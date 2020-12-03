@@ -6,12 +6,17 @@
 <h2>All Products!</h2>
 @foreach (var item in Model)
 {
-    <div class="ItemCategory">
-        @item.CategoryId
-    </div>
-    <div class="itemName">
-        @item.Name
-    </div>
+    <a href="@Url.Action("GetProductsByCategory", "Product", new {catId = item.CategoryId })">
+        <div class="ItemCategory">
+            @item.CategoryId
+        </div>
+    </a>
+    <a href="@Url.Action("ProductPage", "Product", new {id = item.ProductId })">
+        <div class="itemName">
+            @item.Name
+        </div>
+    </a>
+
     <div class="itemPrice">
         @item.Price
     </div>
